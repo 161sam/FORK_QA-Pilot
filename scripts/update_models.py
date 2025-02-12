@@ -9,8 +9,11 @@ def get_models():
     try:
         response = requests.get(BASE_URL)
         response.raise_for_status()
-        models = response.json()  # Annahme: Die API gibt JSON zurück
-        return models.get("models", [])  # Annahme: Modelle sind unter "models" gelistet
+        models_data = response.json()
+        
+        # Extrahiere die Modell-IDs aus dem Feld 'data'
+        models = [model["id"] for model in models_data.get("data", [])]
+        return models
     except Exception as e:
         print(f"Fehler beim Abrufen der Modelle: {e}")
         return []
