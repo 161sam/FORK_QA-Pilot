@@ -168,7 +168,7 @@ npm run dev
 8. Run the backend QA-Pilot in another terminal:
 
 ```shell
-python qa_pilot_run.py
+python scripts/update_models.py && python qa_pilot_run.py
 ```
 
 ### Tips
